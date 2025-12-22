@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "OrleansBook.Host": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}

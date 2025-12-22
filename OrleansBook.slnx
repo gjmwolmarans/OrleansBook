@@ -1,3 +1,10 @@
 <Solution>
-  <Project Path="src/OrleansBook.GrainInterfaces/OrleansBook.GrainInterfaces.csproj" />
+  <Folder Name="/src/">
+    <Project Path="src/OrleansBook.Client/OrleansBook.Client.csproj" Id="4b0d6725-7803-4d94-a6bf-cd216d550034" />
+    <Project Path="src/OrleansBook.GrainClasses/OrleansBook.GrainClasses.csproj" Id="2a6aa36a-9e8f-4415-a25b-db2a62ea4f5a" />
+    <Project Path="src/OrleansBook.GrainInterfaces/OrleansBook.GrainInterfaces.csproj" />
+    <Project Path="src/OrleansBook.Host/OrleansBook.Host.csproj" Id="c913c84e-0950-4374-ba44-1037ad89789a" />
+    <Project Path="src/OrleansBook.Tests/OrleansBook.Tests.csproj" />
+    <Project Path="src/OrleansBook.WebApi/OrleansBook.WebApi.csproj" />
+  </Folder>
 </Solution>
