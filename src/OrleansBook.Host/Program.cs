@@ -22,7 +22,8 @@ public class Program
                     .AddMemoryStreams("StreamProvider")
                     .AddMemoryGrainStorageAsDefault()
                     .AddMemoryGrainStorage("robotStateStore")
-                    .AddMemoryGrainStorage("PubSubStore");
+                    .AddMemoryGrainStorage("PubSubStore")
+                    .UseInMemoryReminderService();
                 builder.ConfigureLogging(logging =>
                 {
                     logging.AddConsole();
