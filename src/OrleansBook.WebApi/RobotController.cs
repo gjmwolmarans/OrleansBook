@@ -20,7 +20,7 @@ public class RobotController : ControllerBase
     [Route("robot/{name}/instruction")]
     public Task<string> Get(string name)
     {
-        var grain = _client.GetGrain<IRobotGrain>(name);
+        var grain = _client.GetGrain<IRobotGrain>(name, "OrleansBook.GrainClasses.EventSourcedGrain");
         return grain.GetNextInstruction();
     }
 
@@ -28,7 +28,7 @@ public class RobotController : ControllerBase
     [Route("robot/{name}/instruction")]
     public async Task<IActionResult> Post(string name, [FromBody] string value)
     {
-        var grain = _client.GetGrain<IRobotGrain>(name);
+        var grain = _client.GetGrain<IRobotGrain>(name, "OrleansBook.GrainClasses.EventSourcedGrain");
         await grain.AddInstruction(value);
         return Ok();
     }
