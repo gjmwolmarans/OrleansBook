@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Azure.Data.Tables;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Orleans;
 using Orleans.Hosting;
 using Orleans.Serialization;
+using Orleans.Transactions;
 using OrleansBook.GrainClasses;
 
 namespace OrleansBook.Host;
@@ -24,6 +27,16 @@ public class Program
                     .AddMemoryGrainStorage("robotStateStore")
                     .AddMemoryGrainStorage("PubSubStore")
                     .UseInMemoryReminderService();
+
+                if (builder.Configuration.GetConnectionString("OrleansBook") is { } connectionString)
+                {
+                    builder.AddAzureTableTransactionalStateStorage("TransactionStore", options =>
+                    {
+                        options.TableServiceClient = new TableServiceClient(connectionString);
+                    });
+                }
+                builder.UseTransactions();
+
                 builder.ConfigureLogging(logging =>
                 {
                     logging.AddConsole();
